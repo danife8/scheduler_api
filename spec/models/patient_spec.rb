@@ -13,5 +13,31 @@
 require 'rails_helper'
 
 RSpec.describe Patient do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'creates with valid attributes' do
+    expect(create(:patient)).to be_valid
+  end
+
+  it 'fail creating with missing name' do
+    patient = build(:patient)
+    patient.name = nil
+    expect(patient).not_to be_valid
+  end
+
+  it 'fail creating with missing lastname' do
+    patient = build(:patient)
+    patient.lastname = nil
+    expect(patient).not_to be_valid
+  end
+
+  it 'fail creating with missing phone' do
+    patient = build(:patient)
+    patient.phone = nil
+    expect(patient).not_to be_valid
+  end
+
+  it 'fail creating with missing email' do
+    patient = build(:patient)
+    patient.email = nil
+    expect(patient).not_to be_valid
+  end
 end

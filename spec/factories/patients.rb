@@ -14,7 +14,7 @@ FactoryBot.define do
   factory :patient do
     name { Faker::Name.first_name }
     lastname { Faker::Name.last_name }
-    email { Faker::Internet.safe_email }
+    email { Faker::Internet.email }
     phone { Faker::PhoneNumber.phone_number }
   end
 end

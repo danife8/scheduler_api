@@ -7,28 +7,32 @@
 #  time          :time
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
-#  patients_id   :integer          not null
+#  patient_id    :integer          not null
 #  specialist_id :integer          not null
 #
 # Indexes
 #
-#  index_appointments_on_patients_id    (patients_id)
+#  index_appointments_on_patient_id     (patient_id)
 #  index_appointments_on_specialist_id  (specialist_id)
 #
 # Foreign Keys
 #
-#  patients_id    (patients_id => patients.id)
+#  patient_id     (patient_id => patients.id)
 #  specialist_id  (specialist_id => specialists.id)
 #
 class Appointment < ApplicationRecord
-  ## CONSTANTS
-  DEFAULT_TIME = 30.minutes
+  ## TODO || BUSINESS LOGIC:
+  # Set a default appointment interval. DEFAULT_TIME = 30.minutes
+  # Uniqueness validation in 'date' for patient <=> specialist 
+  # Validate 'time' if the patient already has other appointment -
+  # - with another specialist
+  # Validate 'time' and 'date' inside specialist availability
 
-  ## VALIDATIONS
-  validates :date, presence: true, uniqueness: { scope: %i[patients specialist] }
+  ## Validations
   validates :time, presence: true
+  validates :date, presence: true
 
   ## ASSOCIATIONS
-  belongs_to :patients
+  belongs_to :patient
   belongs_to :specialist
 end

@@ -15,7 +15,7 @@ FactoryBot.define do
   factory :specialist do
     name { Faker::Name.first_name }
     lastname { Faker::Name.last_name }
-    email { Faker::Internet.safe_email }
+    email { Faker::Internet.email }
     phone { Faker::PhoneNumber.phone_number }
     specialty { Faker::Job.position }
   end

@@ -21,5 +21,23 @@
 require 'rails_helper'
 
 RSpec.describe Availability do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context 'with specialist defined' do
+    let(:specialist) { create(:specialist) }
+
+    it 'creates with valid attributes' do
+      expect(create(:availability, specialist: specialist)).to be_valid
+    end
+
+    it 'not create with invalid date' do
+      availability = build(:availability, specialist: specialist)
+      availability.date = 2.days.ago
+      expect(availability).not_to be_valid
+    end
+  end
+
+  context 'without specialist defined' do
+    it 'creates with valid attributes' do
+      expect(build(:availability)).not_to be_valid
+    end
+  end
 end

@@ -12,6 +12,10 @@
 #  updated_at :datetime         not null
 #
 class Specialist < ApplicationRecord
+  # TODO || BUSINESS LOGIC:
+  # Specialist probably could inherit common attributes from a 'User' class
+  # Validate uniquness of specialists by 'email'
+
   ## VALIDATIONS
   validates :name, presence: true
   validates :lastname, presence: true
@@ -20,7 +24,7 @@ class Specialist < ApplicationRecord
   validates :specialty, presence: true
 
   ## ASSOCIATIONS
-  has_many :availabilities
-  has_many :appointments
+  has_many :availabilities, dependent: :destroy
+  has_many :appointments, dependent: :destroy
   has_many :patients, through: :appointments
 end
