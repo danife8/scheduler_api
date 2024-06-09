@@ -14,7 +14,7 @@ require 'rails_helper'
 
 RSpec.describe '/api/v1/availabilities' do
   # This should return the minimal set of attributes required to create a valid
-  # Api::V1::Availability. As you add validations to Api::V1::Availability, be sure to
+  # Availability. As you add validations to Availability, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
     skip('Add a hash of attributes valid for your model')
@@ -34,7 +34,7 @@ RSpec.describe '/api/v1/availabilities' do
 
   describe 'GET /index' do
     it 'renders a successful response' do
-      Api::V1::Availability.create! valid_attributes
+      Availability.create! valid_attributes
       get api_v1_availabilities_url, headers: valid_headers, as: :json
       expect(response).to be_successful
     end
@@ -42,7 +42,7 @@ RSpec.describe '/api/v1/availabilities' do
 
   describe 'GET /show' do
     it 'renders a successful response' do
-      availability = Api::V1::Availability.create! valid_attributes
+      availability = Availability.create! valid_attributes
       get api_v1_availability_url(availability), as: :json
       expect(response).to be_successful
     end
@@ -50,11 +50,11 @@ RSpec.describe '/api/v1/availabilities' do
 
   describe 'POST /create' do
     context 'with valid parameters' do
-      it 'creates a new Api::V1::Availability' do
+      it 'creates a new Availability' do
         expect do
           post api_v1_availabilities_url,
                params: { api_v1_availability: valid_attributes }, headers: valid_headers, as: :json
-        end.to change(Api::V1::Availability, :count).by(1)
+        end.to change(Availability, :count).by(1)
       end
 
       it 'renders a JSON response with the new api_v1_availability' do
@@ -66,11 +66,11 @@ RSpec.describe '/api/v1/availabilities' do
     end
 
     context 'with invalid parameters' do
-      it 'does not create a new Api::V1::Availability' do
+      it 'does not create a new Availability' do
         expect do
           post api_v1_availabilities_url,
                params: { api_v1_availability: invalid_attributes }, as: :json
-        end.not_to change(Api::V1::Availability, :count)
+        end.not_to change(Availability, :count)
       end
 
       it 'renders a JSON response with errors for the new api_v1_availability' do
@@ -89,7 +89,7 @@ RSpec.describe '/api/v1/availabilities' do
       end
 
       it 'updates the requested api_v1_availability' do
-        availability = Api::V1::Availability.create! valid_attributes
+        availability = Availability.create! valid_attributes
         patch api_v1_availability_url(availability),
               params: { api_v1_availability: new_attributes }, headers: valid_headers, as: :json
         availability.reload
@@ -97,7 +97,7 @@ RSpec.describe '/api/v1/availabilities' do
       end
 
       it 'renders a JSON response with the api_v1_availability' do
-        availability = Api::V1::Availability.create! valid_attributes
+        availability = Availability.create! valid_attributes
         patch api_v1_availability_url(availability),
               params: { api_v1_availability: new_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:ok)
@@ -107,7 +107,7 @@ RSpec.describe '/api/v1/availabilities' do
 
     context 'with invalid parameters' do
       it 'renders a JSON response with errors for the api_v1_availability' do
-        availability = Api::V1::Availability.create! valid_attributes
+        availability = Availability.create! valid_attributes
         patch api_v1_availability_url(availability),
               params: { api_v1_availability: invalid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
@@ -118,10 +118,10 @@ RSpec.describe '/api/v1/availabilities' do
 
   describe 'DELETE /destroy' do
     it 'destroys the requested api_v1_availability' do
-      availability = Api::V1::Availability.create! valid_attributes
+      availability = Availability.create! valid_attributes
       expect do
         delete api_v1_availability_url(availability), headers: valid_headers, as: :json
-      end.to change(Api::V1::Availability, :count).by(-1)
+      end.to change(Availability, :count).by(-1)
     end
   end
 end

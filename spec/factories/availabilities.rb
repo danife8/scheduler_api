@@ -20,9 +20,9 @@
 #
 FactoryBot.define do
   factory :availability do
-    date { Faker::Date.in_date_period }
-    start_time { Faker::Time.between(from: Time.zone.today, to: Time.zone.today) }
-    end_time { start_time + 30.minutes }
+    date { Time.zone.today }
+    start_time { Time.zone.parse('09:00') }
+    end_time { Time.zone.parse('17:00') }
     specialist { nil }
   end
 end

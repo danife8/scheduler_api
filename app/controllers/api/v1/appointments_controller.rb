@@ -50,7 +50,7 @@ module Api
 
       # Only allow a list of trusted parameters through.
       def appointment_params
-        params.require(:appointment).permit(:date, :time, :status, :patients_id, :specialist_id)
+        params.require(:appointment).permit(:date, :time, :status, :patient_id, :specialist_id)
       end
     end
   end

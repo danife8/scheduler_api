@@ -19,11 +19,25 @@
 #  specialist_id  (specialist_id => specialists.id)
 #
 class Availability < ApplicationRecord
+  # TODO || BUSINESS LOGIC:
+  # Validate 'date' uniqueness per 'specialist'
+  # Validate 'start_time' > now
+  # Validate 'end_time' > 'start_time'
+  # Validate 'end_time' = 'start_time' + X.hours
+
   ## VALIDATIONS
-  validates :date, presence: true, uniqueness: { scope: :specialist }
+  validate :date, :not_past_date
+  validates :date, presence: true
   validates :start_time, presence: true
   validates :end_time, presence: true
 
   ## ASSOCIATIONS
   belongs_to :specialist
+
+  private
+  
+  def not_past_date
+    return unless date < Time.zone.today
+    errors.add(:date, 'not in past')
+  end
 end

@@ -14,5 +14,37 @@
 require 'rails_helper'
 
 RSpec.describe Specialist do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'creates with valid attributes' do
+    expect(create(:specialist)).to be_valid
+  end
+
+  it 'fail creating with missing name' do
+    specialist = build(:specialist)
+    specialist.name = nil
+    expect(specialist).not_to be_valid
+  end
+
+  it 'fail creating with missing lastname' do
+    specialist = build(:specialist)
+    specialist.lastname = nil
+    expect(specialist).not_to be_valid
+  end
+
+  it 'fail creating with missing phone' do
+    specialist = build(:specialist)
+    specialist.phone = nil
+    expect(specialist).not_to be_valid
+  end
+
+  it 'fail creating with missing email' do
+    specialist = build(:specialist)
+    specialist.email = nil
+    expect(specialist).not_to be_valid
+  end
+
+  it 'fail creating with missing specialty' do
+    specialist = build(:specialist)
+    specialist.specialty = nil
+    expect(specialist).not_to be_valid
+  end
 end

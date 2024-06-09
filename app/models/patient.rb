@@ -11,6 +11,10 @@
 #  updated_at :datetime         not null
 #
 class Patient < ApplicationRecord
+  # TODO || BUSINESS LOGIC:
+  # Patients probably could inherit common attributes from a 'User' class
+  # Validate uniquness of patients by 'email'
+
   ## VALIDATIONS
   validates :name, presence: true
   validates :lastname, presence: true
@@ -18,5 +22,5 @@ class Patient < ApplicationRecord
   validates :phone, presence: true
 
   ## ASSOCIATIONS
-  has_many :appointments
+  has_many :appointments, dependent: :destroy
 end
