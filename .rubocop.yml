@@ -25,7 +25,10 @@ Rails/HasManyOrHasOneDependent:
   Enabled: false
 
 RSpec/MultipleExpectations:
-  Max: 2
+  Max: 3
+
+RSpec/ExampleLength:
+  Max: 10
 
 Style/CommentAnnotation:
   Enabled: false
