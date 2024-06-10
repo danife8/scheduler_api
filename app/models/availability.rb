@@ -35,9 +35,10 @@ class Availability < ApplicationRecord
   belongs_to :specialist
 
   private
-  
+
   def not_past_date
     return unless date < Time.zone.today
+
     errors.add(:date, 'not in past')
   end
 end

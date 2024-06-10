@@ -19,7 +19,7 @@ module Api
         @specialist = Specialist.new(specialist_params)
 
         if @specialist.save
-          render :show, status: :created, location: @specialist
+          render :show, status: :created, location: api_v1_patient_url(@specialist)
         else
           render json: @specialist.errors, status: :unprocessable_entity
         end
@@ -29,7 +29,7 @@ module Api
       # PATCH/PUT /api/v1/specialists/1.json
       def update
         if @specialist.update(specialist_params)
-          render :show, status: :ok, location: @specialist
+          render :show, status: :ok, location: api_v1_patient_url(@specialist)
         else
           render json: @specialist.errors, status: :unprocessable_entity
         end

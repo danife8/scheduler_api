@@ -17,9 +17,8 @@ module Api
       # POST /api/v1/appointments.json
       def create
         @appointment = Appointment.new(appointment_params)
-
         if @appointment.save
-          render :show, status: :created, location: @appointment
+          render :show, status: :created, location: api_v1_appointments_path(@appointment)
         else
           render json: @appointment.errors, status: :unprocessable_entity
         end
@@ -29,7 +28,7 @@ module Api
       # PATCH/PUT /api/v1/appointments/1.json
       def update
         if @appointment.update(appointment_params)
-          render :show, status: :ok, location: @appointment
+          render :show, status: :ok, location: api_v1_appointments_path(@appointment)
         else
           render json: @appointment.errors, status: :unprocessable_entity
         end
@@ -50,7 +49,7 @@ module Api
 
       # Only allow a list of trusted parameters through.
       def appointment_params
-        params.require(:appointment).permit(:date, :time, :status, :patient_id, :specialist_id)
+        params.require(:appointment).permit(:date, :time, :patient_id, :specialist_id)
       end
     end
   end
