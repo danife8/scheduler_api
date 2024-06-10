@@ -32,3 +32,6 @@ RSpec/ExampleLength:
 
 Style/CommentAnnotation:
   Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 10
