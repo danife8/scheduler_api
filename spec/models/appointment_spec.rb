@@ -23,17 +23,17 @@
 require 'rails_helper'
 
 RSpec.describe Appointment do
-  let(:specialist) { create :specialist, :with_availability }
-  let(:patient) { create :patient }
+  let(:specialist) { create(:specialist, :with_availability) }
+  let(:patient) { create(:patient) }
 
   context 'with patient and specialist' do
     let(:appointment) do
-      Appointment.new(
+      described_class.new(
         date: specialist.availabilities.first.date,
         time: specialist.availabilities.first.start_time,
-        specialist: specialist,
-        patient: patient
-        )
+        specialist:,
+        patient:
+      )
     end
 
     it 'with valid parameters' do

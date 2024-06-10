@@ -23,7 +23,7 @@
 class Appointment < ApplicationRecord
   ## TODO || BUSINESS LOGIC:
   # Set a default appointment interval. DEFAULT_TIME = 30.minutes
-  # Uniqueness validation in 'date' for patient <=> specialist 
+  # Uniqueness validation in 'date' for patient <=> specialist
   # Validate 'time' if the patient already has other appointment -
   # - with another specialist
   # Validate 'time' and 'date' inside specialist availability

@@ -13,7 +13,8 @@
 class Patient < ApplicationRecord
   # TODO || BUSINESS LOGIC:
   # Patients probably could inherit common attributes from a 'User' class
-  # Validate uniquness of patients by 'email'
+  # Validate uniqueness of patients by 'email'
+  # Validate 'email' format
 
   ## VALIDATIONS
   validates :name, presence: true

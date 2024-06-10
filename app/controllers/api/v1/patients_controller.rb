@@ -19,7 +19,7 @@ module Api
         @patient = Patient.new(patient_params)
 
         if @patient.save
-          render :show, status: :created, location: @patient
+          render :show, status: :created, location: api_v1_patient_url(@patient)
         else
           render json: @patient.errors, status: :unprocessable_entity
         end
@@ -29,7 +29,7 @@ module Api
       # PATCH/PUT /api/v1/patients/1.json
       def update
         if @patient.update(patient_params)
-          render :show, status: :ok, location: @patient
+          render :show, status: :ok, location: api_v1_patient_url(@patient)
         else
           render json: @patient.errors, status: :unprocessable_entity
         end
@@ -50,7 +50,7 @@ module Api
 
       # Only allow a list of trusted parameters through.
       def patient_params
-        params.require(:patient).permit(:name, :lastname, :email, :phone, :specialty)
+        params.require(:patient).permit(:name, :lastname, :email, :phone)
       end
     end
   end

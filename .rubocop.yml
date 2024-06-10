@@ -26,3 +26,6 @@ Rails/HasManyOrHasOneDependent:
 
 RSpec/MultipleExpectations:
   Max: 2
+
+Style/CommentAnnotation:
+  Enabled: false

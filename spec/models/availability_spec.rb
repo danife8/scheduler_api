@@ -23,13 +23,13 @@ require 'rails_helper'
 RSpec.describe Availability do
   context 'with specialist defined' do
     let(:specialist) { create(:specialist) }
+    let(:availability) { build(:availability, specialist: specialist) } # rubocop: disable Style/HashSyntax
 
     it 'creates with valid attributes' do
-      expect(create(:availability, specialist: specialist)).to be_valid
+      expect(availability).to be_valid
     end
 
     it 'not create with invalid date' do
-      availability = build(:availability, specialist: specialist)
       availability.date = 2.days.ago
       expect(availability).not_to be_valid
     end
