@@ -33,7 +33,14 @@ docker run -p 3000:3000 -v $(pwd):/rails -it scheduler_api
 ```
 Done!
 
-### Tools
+## Database design
+![Database design](vendor/scheduler_api.png)
+
+## Postman endpoints collection
+How to import endpoints collection in Postman. [Here](https://learning.postman.com/docs/getting-started/importing-and-exporting/importing-data/#import-postman-data)
+
+Endpoints collection. [Here](vendor/scheduler_api.postman_collection.json)
+## Tools
 First we need docker container id with
 ```bash 
 docker ps --filter "ancestor=scheduler_api:latest" --format "{{.ID}}"
